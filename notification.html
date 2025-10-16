@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>notification</title>
+    </head>
+
+    <body>
+
+        <script>
+
+            function addNotification (txt) {
+                new Notification(txt)
+            }
+
+            if ("Notification" in window) {
+               Notification.requestPermission().then(Permissions => {
+                if (Permissions === "granted") {
+                    addNotification("hellow")
+                } else {
+                    alert("you missed!")
+                }
+               })
+            } else {
+                console.log("dont have Notification")
+            }
+
+        </script>
+    </body>
+
+</html>
