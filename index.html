@@ -10,20 +10,19 @@
 
         <script>
 
-            function addNotification (txt) {
-                new Notification(txt)
-            }
-
+            // בודקים אם הדפדפן שלך תומך בהתראות
             if ("Notification" in window) {
-               Notification.requestPermission().then(Permissions => {
-                if (Permissions === "granted") {
-                    addNotification("hellow")
+              // שואלים את המשתמש אם הוא רוצה לקבל התראות
+              Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                  // שולחים התראה קטנה למחשב או לטלפון
+                  new Notification("שלום! זו ההתראה שלך 😎");
                 } else {
-                    alert("you missed!")
+                  alert("לא ניתן לשלוח התראות בלי אישור");
                 }
-               })
+              });
             } else {
-                console.log("dont have Notification")
+              alert("הדפדפן שלך לא תומך בהתראות 😢");
             }
 
         </script>
@@ -31,3 +30,4 @@
 
 
 </html>
+
